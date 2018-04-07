@@ -1,0 +1,4 @@
+# <Node Id> <Destination IP Address> <Destination IP Mask> <Next Hop Address>
+
+1 90.2.1.0 255.255.255.0 90.0.0.3
+1 90.2.2.0 255.255.255.0 90.0.0.4

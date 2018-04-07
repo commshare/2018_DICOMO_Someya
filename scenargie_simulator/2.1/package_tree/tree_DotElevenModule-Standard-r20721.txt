@@ -1,0 +1,571 @@
+scenargie_simulator
+`-- 2.1
+    |-- document
+    |   |-- License
+    |   |   `-- DotEleven
+    |   |       `-- license.txt
+    |   |-- Scenargie-2.1-DotElevenModule-UserGuide-E.pdf
+    |   `-- Scenargie-2.1-DotElevenModule-UserGuide-J.pdf
+    |-- package_tree
+    |   `-- tree_DotElevenModule-Standard-r20721.txt
+    |-- scenarios_linux
+    |   |-- dot11_aggregation
+    |   |   |-- aggregation.batchconfig
+    |   |   |-- aggregation.case
+    |   |   |-- aggregation.property
+    |   |   |-- aggregation_Area.layer
+    |   |   |-- aggregation_Building.layer
+    |   |   |-- aggregation_BusStop.layer
+    |   |   |-- aggregation_Channel.layer
+    |   |   |-- aggregation_Dot11n.layer
+    |   |   |-- aggregation_Entrance.layer
+    |   |   |-- aggregation_Global.layer
+    |   |   |-- aggregation_Intersection.layer
+    |   |   |-- aggregation_POI.layer
+    |   |   |-- aggregation_Park.layer
+    |   |   |-- aggregation_Railroad.layer
+    |   |   |-- aggregation_Road.layer
+    |   |   |-- aggregation_ServiceArea.layer
+    |   |   |-- aggregation_Station.layer
+    |   |   |-- aggregation_TrafficLight.layer
+    |   |   |-- aggregation_VehicleLine.layer
+    |   |   |-- aggregation_Wall.layer
+    |   |   |-- commandline
+    |   |   |   |-- dot11modes.ber
+    |   |   |   |-- mimo2x2ch0
+    |   |   |   |-- mimo3x3ch0
+    |   |   |   |-- mimo4x2ch0
+    |   |   |   |-- shapes
+    |   |   |   |   |-- building.dbf
+    |   |   |   |   |-- building.shp
+    |   |   |   |   `-- building.shx
+    |   |   |   |-- simulation.config
+    |   |   |   |-- simulation.pos
+    |   |   |   `-- simulation.statconfig
+    |   |   |-- dot11modes.ber
+    |   |   |-- mimo2x2ch0
+    |   |   |-- mimo3x3ch0
+    |   |   `-- mimo4x2ch0
+    |   |-- dot11_crossroad
+    |   |   |-- commandline
+    |   |   |   |-- dot11modes.ber
+    |   |   |   |-- shapes
+    |   |   |   |   |-- busstop.dbf
+    |   |   |   |   |-- busstop.shp
+    |   |   |   |   |-- busstop.shx
+    |   |   |   |   |-- intersection.dbf
+    |   |   |   |   |-- intersection.shp
+    |   |   |   |   |-- intersection.shx
+    |   |   |   |   |-- road.dbf
+    |   |   |   |   |-- road.shp
+    |   |   |   |   |-- road.shx
+    |   |   |   |   |-- trafficlight.dbf
+    |   |   |   |   |-- trafficlight.shp
+    |   |   |   |   `-- trafficlight.shx
+    |   |   |   |-- simulation.config
+    |   |   |   |-- simulation.mob
+    |   |   |   |-- simulation.pos
+    |   |   |   `-- simulation.statconfig
+    |   |   |-- crossroad.batchconfig
+    |   |   |-- crossroad.case
+    |   |   |-- crossroad.property
+    |   |   |-- crossroad_Area.layer
+    |   |   |-- crossroad_Building.layer
+    |   |   |-- crossroad_BusStop.layer
+    |   |   |-- crossroad_Channel.layer
+    |   |   |-- crossroad_Dot11p.layer
+    |   |   |-- crossroad_Entrance.layer
+    |   |   |-- crossroad_Global.layer
+    |   |   |-- crossroad_Intersection.layer
+    |   |   |-- crossroad_POI.layer
+    |   |   |-- crossroad_Park.layer
+    |   |   |-- crossroad_Railroad.layer
+    |   |   |-- crossroad_Road.layer
+    |   |   |-- crossroad_ServiceArea.layer
+    |   |   |-- crossroad_Station.layer
+    |   |   |-- crossroad_TrafficLight.layer
+    |   |   |-- crossroad_VehicleLine.layer
+    |   |   |-- crossroad_Wall.layer
+    |   |   |-- dot11modes.ber
+    |   |   `-- simulation.mob
+    |   |-- dot11_dtn
+    |   |   |-- commandline
+    |   |   |   |-- dot11modes.ber
+    |   |   |   |-- shapes
+    |   |   |   |   |-- building.dbf
+    |   |   |   |   |-- building.shp
+    |   |   |   |   |-- building.shx
+    |   |   |   |   |-- busstop.dbf
+    |   |   |   |   |-- busstop.shp
+    |   |   |   |   |-- busstop.shx
+    |   |   |   |   |-- intersection.dbf
+    |   |   |   |   |-- intersection.shp
+    |   |   |   |   |-- intersection.shx
+    |   |   |   |   |-- road.dbf
+    |   |   |   |   |-- road.shp
+    |   |   |   |   |-- road.shx
+    |   |   |   |   |-- trafficlight.dbf
+    |   |   |   |   |-- trafficlight.shp
+    |   |   |   |   `-- trafficlight.shx
+    |   |   |   |-- simulation.config
+    |   |   |   |-- simulation.pos
+    |   |   |   `-- simulation.statconfig
+    |   |   |-- dot11modes.ber
+    |   |   |-- dtn.batchconfig
+    |   |   |-- dtn.case
+    |   |   |-- dtn.property
+    |   |   |-- dtn_Area.layer
+    |   |   |-- dtn_Building.layer
+    |   |   |-- dtn_BusStop.layer
+    |   |   |-- dtn_Channel.layer
+    |   |   |-- dtn_Dot11g.layer
+    |   |   |-- dtn_Entrance.layer
+    |   |   |-- dtn_Global.layer
+    |   |   |-- dtn_Intersection.layer
+    |   |   |-- dtn_POI.layer
+    |   |   |-- dtn_Park.layer
+    |   |   |-- dtn_Railroad.layer
+    |   |   |-- dtn_Road.layer
+    |   |   |-- dtn_ServiceArea.layer
+    |   |   |-- dtn_Station.layer
+    |   |   |-- dtn_TrafficLight.layer
+    |   |   |-- dtn_VehicleLine.layer
+    |   |   `-- dtn_Wall.layer
+    |   |-- dot11_handover
+    |   |   |-- commandline
+    |   |   |   |-- dot11modes.ber
+    |   |   |   |-- shapes
+    |   |   |   |   |-- busstop.dbf
+    |   |   |   |   |-- busstop.shp
+    |   |   |   |   |-- busstop.shx
+    |   |   |   |   |-- intersection.dbf
+    |   |   |   |   |-- intersection.shp
+    |   |   |   |   |-- intersection.shx
+    |   |   |   |   |-- road.dbf
+    |   |   |   |   |-- road.shp
+    |   |   |   |   |-- road.shx
+    |   |   |   |   |-- trafficlight.dbf
+    |   |   |   |   |-- trafficlight.shp
+    |   |   |   |   `-- trafficlight.shx
+    |   |   |   |-- simulation.config
+    |   |   |   |-- simulation.pos
+    |   |   |   |-- simulation.routes
+    |   |   |   `-- simulation.statconfig
+    |   |   |-- dot11modes.ber
+    |   |   |-- handover.batchconfig
+    |   |   |-- handover.case
+    |   |   |-- handover.property
+    |   |   |-- handover.routes
+    |   |   |-- handover_Area.layer
+    |   |   |-- handover_Building.layer
+    |   |   |-- handover_BusStop.layer
+    |   |   |-- handover_Channel.layer
+    |   |   |-- handover_Dot11g.layer
+    |   |   |-- handover_Dot11gAndWired.layer
+    |   |   |-- handover_Entrance.layer
+    |   |   |-- handover_Global.layer
+    |   |   |-- handover_Intersection.layer
+    |   |   |-- handover_POI.layer
+    |   |   |-- handover_Park.layer
+    |   |   |-- handover_Railroad.layer
+    |   |   |-- handover_Road.layer
+    |   |   |-- handover_ServiceArea.layer
+    |   |   |-- handover_Station.layer
+    |   |   |-- handover_TrafficLight.layer
+    |   |   |-- handover_VehicleLine.layer
+    |   |   |-- handover_Wall.layer
+    |   |   `-- handover_Wired.layer
+    |   |-- dot11_indoor
+    |   |   |-- commandline
+    |   |   |   |-- default.material
+    |   |   |   |-- dot11modes.ber
+    |   |   |   |-- shapes
+    |   |   |   |   |-- building.dbf
+    |   |   |   |   |-- building.shp
+    |   |   |   |   |-- building.shx
+    |   |   |   |   |-- wall.dbf
+    |   |   |   |   |-- wall.shp
+    |   |   |   |   `-- wall.shx
+    |   |   |   |-- simulation.config
+    |   |   |   |-- simulation.pos
+    |   |   |   |-- simulation.routes
+    |   |   |   `-- simulation.statconfig
+    |   |   |-- default.material
+    |   |   |-- dot11modes.ber
+    |   |   |-- indoor.batchconfig
+    |   |   |-- indoor.case
+    |   |   |-- indoor.property
+    |   |   |-- indoor.routes
+    |   |   |-- indoor_Area.layer
+    |   |   |-- indoor_Building.layer
+    |   |   |-- indoor_BusStop.layer
+    |   |   |-- indoor_Channel.layer
+    |   |   |-- indoor_Dot11g.layer
+    |   |   |-- indoor_Dot11gAndWired.layer
+    |   |   |-- indoor_Entrance.layer
+    |   |   |-- indoor_Global.layer
+    |   |   |-- indoor_Intersection.layer
+    |   |   |-- indoor_POI.layer
+    |   |   |-- indoor_Park.layer
+    |   |   |-- indoor_Railroad.layer
+    |   |   |-- indoor_Road.layer
+    |   |   |-- indoor_ServiceArea.layer
+    |   |   |-- indoor_Station.layer
+    |   |   |-- indoor_TrafficLight.layer
+    |   |   |-- indoor_VehicleLine.layer
+    |   |   |-- indoor_Wall.layer
+    |   |   `-- indoor_Wired.layer
+    |   |-- dot11_manet
+    |   |   |-- commandline
+    |   |   |   |-- dot11modes.ber
+    |   |   |   |-- simulation.config
+    |   |   |   |-- simulation.pos
+    |   |   |   `-- simulation.statconfig
+    |   |   |-- dot11modes.ber
+    |   |   |-- manet.batchconfig
+    |   |   |-- manet.case
+    |   |   |-- manet.property
+    |   |   |-- manet_Area.layer
+    |   |   |-- manet_Building.layer
+    |   |   |-- manet_BusStop.layer
+    |   |   |-- manet_Channel.layer
+    |   |   |-- manet_Dot11g.layer
+    |   |   |-- manet_Entrance.layer
+    |   |   |-- manet_Global.layer
+    |   |   |-- manet_Intersection.layer
+    |   |   |-- manet_POI.layer
+    |   |   |-- manet_Park.layer
+    |   |   |-- manet_Railroad.layer
+    |   |   |-- manet_Road.layer
+    |   |   |-- manet_ServiceArea.layer
+    |   |   |-- manet_Station.layer
+    |   |   |-- manet_TrafficLight.layer
+    |   |   |-- manet_VehicleLine.layer
+    |   |   `-- manet_Wall.layer
+    |   `-- dot11_multibandwidth
+    |       |-- commandline
+    |       |   |-- dot11modes.ber
+    |       |   |-- simulation.config
+    |       |   |-- simulation.pos
+    |       |   `-- simulation.statconfig
+    |       |-- dot11modes.ber
+    |       |-- multibandwidth.batchconfig
+    |       |-- multibandwidth.case
+    |       |-- multibandwidth.property
+    |       |-- multibandwidth_Area.layer
+    |       |-- multibandwidth_Building.layer
+    |       |-- multibandwidth_BusStop.layer
+    |       |-- multibandwidth_Channel.layer
+    |       |-- multibandwidth_Dot11a.layer
+    |       |-- multibandwidth_Dot11ac.layer
+    |       |-- multibandwidth_Dot11n.layer
+    |       |-- multibandwidth_Entrance.layer
+    |       |-- multibandwidth_Global.layer
+    |       |-- multibandwidth_Intersection.layer
+    |       |-- multibandwidth_POI.layer
+    |       |-- multibandwidth_Park.layer
+    |       |-- multibandwidth_Railroad.layer
+    |       |-- multibandwidth_Road.layer
+    |       |-- multibandwidth_ServiceArea.layer
+    |       |-- multibandwidth_Station.layer
+    |       |-- multibandwidth_TrafficLight.layer
+    |       |-- multibandwidth_VehicleLine.layer
+    |       `-- multibandwidth_Wall.layer
+    |-- scenarios_windows
+    |   |-- dot11_aggregation
+    |   |   |-- aggregation.batchconfig
+    |   |   |-- aggregation.case
+    |   |   |-- aggregation.property
+    |   |   |-- aggregation_Area.layer
+    |   |   |-- aggregation_Building.layer
+    |   |   |-- aggregation_BusStop.layer
+    |   |   |-- aggregation_Channel.layer
+    |   |   |-- aggregation_Dot11n.layer
+    |   |   |-- aggregation_Entrance.layer
+    |   |   |-- aggregation_Global.layer
+    |   |   |-- aggregation_Intersection.layer
+    |   |   |-- aggregation_POI.layer
+    |   |   |-- aggregation_Park.layer
+    |   |   |-- aggregation_Railroad.layer
+    |   |   |-- aggregation_Road.layer
+    |   |   |-- aggregation_ServiceArea.layer
+    |   |   |-- aggregation_Station.layer
+    |   |   |-- aggregation_TrafficLight.layer
+    |   |   |-- aggregation_VehicleLine.layer
+    |   |   |-- aggregation_Wall.layer
+    |   |   |-- commandline
+    |   |   |   |-- dot11modes.ber
+    |   |   |   |-- mimo2x2ch0
+    |   |   |   |-- mimo3x3ch0
+    |   |   |   |-- mimo4x2ch0
+    |   |   |   |-- shapes
+    |   |   |   |   |-- building.dbf
+    |   |   |   |   |-- building.shp
+    |   |   |   |   `-- building.shx
+    |   |   |   |-- simulation.config
+    |   |   |   |-- simulation.pos
+    |   |   |   `-- simulation.statconfig
+    |   |   |-- dot11modes.ber
+    |   |   |-- mimo2x2ch0
+    |   |   |-- mimo3x3ch0
+    |   |   `-- mimo4x2ch0
+    |   |-- dot11_crossroad
+    |   |   |-- commandline
+    |   |   |   |-- dot11modes.ber
+    |   |   |   |-- shapes
+    |   |   |   |   |-- busstop.dbf
+    |   |   |   |   |-- busstop.shp
+    |   |   |   |   |-- busstop.shx
+    |   |   |   |   |-- intersection.dbf
+    |   |   |   |   |-- intersection.shp
+    |   |   |   |   |-- intersection.shx
+    |   |   |   |   |-- road.dbf
+    |   |   |   |   |-- road.shp
+    |   |   |   |   |-- road.shx
+    |   |   |   |   |-- trafficlight.dbf
+    |   |   |   |   |-- trafficlight.shp
+    |   |   |   |   `-- trafficlight.shx
+    |   |   |   |-- simulation.config
+    |   |   |   |-- simulation.mob
+    |   |   |   |-- simulation.pos
+    |   |   |   `-- simulation.statconfig
+    |   |   |-- crossroad.batchconfig
+    |   |   |-- crossroad.case
+    |   |   |-- crossroad.property
+    |   |   |-- crossroad_Area.layer
+    |   |   |-- crossroad_Building.layer
+    |   |   |-- crossroad_BusStop.layer
+    |   |   |-- crossroad_Channel.layer
+    |   |   |-- crossroad_Dot11p.layer
+    |   |   |-- crossroad_Entrance.layer
+    |   |   |-- crossroad_Global.layer
+    |   |   |-- crossroad_Intersection.layer
+    |   |   |-- crossroad_POI.layer
+    |   |   |-- crossroad_Park.layer
+    |   |   |-- crossroad_Railroad.layer
+    |   |   |-- crossroad_Road.layer
+    |   |   |-- crossroad_ServiceArea.layer
+    |   |   |-- crossroad_Station.layer
+    |   |   |-- crossroad_TrafficLight.layer
+    |   |   |-- crossroad_VehicleLine.layer
+    |   |   |-- crossroad_Wall.layer
+    |   |   |-- dot11modes.ber
+    |   |   `-- simulation.mob
+    |   |-- dot11_dtn
+    |   |   |-- commandline
+    |   |   |   |-- dot11modes.ber
+    |   |   |   |-- shapes
+    |   |   |   |   |-- building.dbf
+    |   |   |   |   |-- building.shp
+    |   |   |   |   |-- building.shx
+    |   |   |   |   |-- busstop.dbf
+    |   |   |   |   |-- busstop.shp
+    |   |   |   |   |-- busstop.shx
+    |   |   |   |   |-- intersection.dbf
+    |   |   |   |   |-- intersection.shp
+    |   |   |   |   |-- intersection.shx
+    |   |   |   |   |-- road.dbf
+    |   |   |   |   |-- road.shp
+    |   |   |   |   |-- road.shx
+    |   |   |   |   |-- trafficlight.dbf
+    |   |   |   |   |-- trafficlight.shp
+    |   |   |   |   `-- trafficlight.shx
+    |   |   |   |-- simulation.config
+    |   |   |   |-- simulation.pos
+    |   |   |   `-- simulation.statconfig
+    |   |   |-- dot11modes.ber
+    |   |   |-- dtn.batchconfig
+    |   |   |-- dtn.case
+    |   |   |-- dtn.property
+    |   |   |-- dtn_Area.layer
+    |   |   |-- dtn_Building.layer
+    |   |   |-- dtn_BusStop.layer
+    |   |   |-- dtn_Channel.layer
+    |   |   |-- dtn_Dot11g.layer
+    |   |   |-- dtn_Entrance.layer
+    |   |   |-- dtn_Global.layer
+    |   |   |-- dtn_Intersection.layer
+    |   |   |-- dtn_POI.layer
+    |   |   |-- dtn_Park.layer
+    |   |   |-- dtn_Railroad.layer
+    |   |   |-- dtn_Road.layer
+    |   |   |-- dtn_ServiceArea.layer
+    |   |   |-- dtn_Station.layer
+    |   |   |-- dtn_TrafficLight.layer
+    |   |   |-- dtn_VehicleLine.layer
+    |   |   `-- dtn_Wall.layer
+    |   |-- dot11_handover
+    |   |   |-- commandline
+    |   |   |   |-- dot11modes.ber
+    |   |   |   |-- shapes
+    |   |   |   |   |-- busstop.dbf
+    |   |   |   |   |-- busstop.shp
+    |   |   |   |   |-- busstop.shx
+    |   |   |   |   |-- intersection.dbf
+    |   |   |   |   |-- intersection.shp
+    |   |   |   |   |-- intersection.shx
+    |   |   |   |   |-- road.dbf
+    |   |   |   |   |-- road.shp
+    |   |   |   |   |-- road.shx
+    |   |   |   |   |-- trafficlight.dbf
+    |   |   |   |   |-- trafficlight.shp
+    |   |   |   |   `-- trafficlight.shx
+    |   |   |   |-- simulation.config
+    |   |   |   |-- simulation.pos
+    |   |   |   |-- simulation.routes
+    |   |   |   `-- simulation.statconfig
+    |   |   |-- dot11modes.ber
+    |   |   |-- handover.batchconfig
+    |   |   |-- handover.case
+    |   |   |-- handover.property
+    |   |   |-- handover.routes
+    |   |   |-- handover_Area.layer
+    |   |   |-- handover_Building.layer
+    |   |   |-- handover_BusStop.layer
+    |   |   |-- handover_Channel.layer
+    |   |   |-- handover_Dot11g.layer
+    |   |   |-- handover_Dot11gAndWired.layer
+    |   |   |-- handover_Entrance.layer
+    |   |   |-- handover_Global.layer
+    |   |   |-- handover_Intersection.layer
+    |   |   |-- handover_POI.layer
+    |   |   |-- handover_Park.layer
+    |   |   |-- handover_Railroad.layer
+    |   |   |-- handover_Road.layer
+    |   |   |-- handover_ServiceArea.layer
+    |   |   |-- handover_Station.layer
+    |   |   |-- handover_TrafficLight.layer
+    |   |   |-- handover_VehicleLine.layer
+    |   |   |-- handover_Wall.layer
+    |   |   `-- handover_Wired.layer
+    |   |-- dot11_indoor
+    |   |   |-- commandline
+    |   |   |   |-- default.material
+    |   |   |   |-- dot11modes.ber
+    |   |   |   |-- shapes
+    |   |   |   |   |-- building.dbf
+    |   |   |   |   |-- building.shp
+    |   |   |   |   |-- building.shx
+    |   |   |   |   |-- wall.dbf
+    |   |   |   |   |-- wall.shp
+    |   |   |   |   `-- wall.shx
+    |   |   |   |-- simulation.config
+    |   |   |   |-- simulation.pos
+    |   |   |   |-- simulation.routes
+    |   |   |   `-- simulation.statconfig
+    |   |   |-- default.material
+    |   |   |-- dot11modes.ber
+    |   |   |-- indoor.batchconfig
+    |   |   |-- indoor.case
+    |   |   |-- indoor.property
+    |   |   |-- indoor.routes
+    |   |   |-- indoor_Area.layer
+    |   |   |-- indoor_Building.layer
+    |   |   |-- indoor_BusStop.layer
+    |   |   |-- indoor_Channel.layer
+    |   |   |-- indoor_Dot11g.layer
+    |   |   |-- indoor_Dot11gAndWired.layer
+    |   |   |-- indoor_Entrance.layer
+    |   |   |-- indoor_Global.layer
+    |   |   |-- indoor_Intersection.layer
+    |   |   |-- indoor_POI.layer
+    |   |   |-- indoor_Park.layer
+    |   |   |-- indoor_Railroad.layer
+    |   |   |-- indoor_Road.layer
+    |   |   |-- indoor_ServiceArea.layer
+    |   |   |-- indoor_Station.layer
+    |   |   |-- indoor_TrafficLight.layer
+    |   |   |-- indoor_VehicleLine.layer
+    |   |   |-- indoor_Wall.layer
+    |   |   `-- indoor_Wired.layer
+    |   |-- dot11_manet
+    |   |   |-- commandline
+    |   |   |   |-- dot11modes.ber
+    |   |   |   |-- simulation.config
+    |   |   |   |-- simulation.pos
+    |   |   |   `-- simulation.statconfig
+    |   |   |-- dot11modes.ber
+    |   |   |-- manet.batchconfig
+    |   |   |-- manet.case
+    |   |   |-- manet.property
+    |   |   |-- manet_Area.layer
+    |   |   |-- manet_Building.layer
+    |   |   |-- manet_BusStop.layer
+    |   |   |-- manet_Channel.layer
+    |   |   |-- manet_Dot11g.layer
+    |   |   |-- manet_Entrance.layer
+    |   |   |-- manet_Global.layer
+    |   |   |-- manet_Intersection.layer
+    |   |   |-- manet_POI.layer
+    |   |   |-- manet_Park.layer
+    |   |   |-- manet_Railroad.layer
+    |   |   |-- manet_Road.layer
+    |   |   |-- manet_ServiceArea.layer
+    |   |   |-- manet_Station.layer
+    |   |   |-- manet_TrafficLight.layer
+    |   |   |-- manet_VehicleLine.layer
+    |   |   `-- manet_Wall.layer
+    |   `-- dot11_multibandwidth
+    |       |-- commandline
+    |       |   |-- dot11modes.ber
+    |       |   |-- simulation.config
+    |       |   |-- simulation.pos
+    |       |   `-- simulation.statconfig
+    |       |-- dot11modes.ber
+    |       |-- multibandwidth.batchconfig
+    |       |-- multibandwidth.case
+    |       |-- multibandwidth.property
+    |       |-- multibandwidth_Area.layer
+    |       |-- multibandwidth_Building.layer
+    |       |-- multibandwidth_BusStop.layer
+    |       |-- multibandwidth_Channel.layer
+    |       |-- multibandwidth_Dot11a.layer
+    |       |-- multibandwidth_Dot11ac.layer
+    |       |-- multibandwidth_Dot11n.layer
+    |       |-- multibandwidth_Entrance.layer
+    |       |-- multibandwidth_Global.layer
+    |       |-- multibandwidth_Intersection.layer
+    |       |-- multibandwidth_POI.layer
+    |       |-- multibandwidth_Park.layer
+    |       |-- multibandwidth_Railroad.layer
+    |       |-- multibandwidth_Road.layer
+    |       |-- multibandwidth_ServiceArea.layer
+    |       |-- multibandwidth_Station.layer
+    |       |-- multibandwidth_TrafficLight.layer
+    |       |-- multibandwidth_VehicleLine.layer
+    |       `-- multibandwidth_Wall.layer
+    |-- source
+    |   `-- dot11
+    |       |-- dot11_common.h
+    |       |-- dot11_effectivesinr.cpp
+    |       |-- dot11_effectivesinr.h
+    |       |-- dot11_headers.h
+    |       |-- dot11_incoming_buffer.h
+    |       |-- dot11_info_interface.cpp
+    |       |-- dot11_info_interface.h
+    |       |-- dot11_mac.cpp
+    |       |-- dot11_mac.h
+    |       |-- dot11_mac_ap.cpp
+    |       |-- dot11_mac_ap.h
+    |       |-- dot11_mac_sta.cpp
+    |       |-- dot11_mac_sta.h
+    |       |-- dot11_phy.cpp
+    |       |-- dot11_phy.h
+    |       |-- dot11_ratecontrol.cpp
+    |       |-- dot11_ratecontrol.h
+    |       |-- dot11_tracedefs.h
+    |       |-- dot11_txpowercontrol.h
+    |       |-- makefile.common
+    |       |-- makefile.linux
+    |       |-- makefile.win
+    |       `-- sim.cpp
+    `-- visuallab
+        |-- data
+        |   `-- dot11
+        |       |-- dot11.component
+        |       `-- dot11.objtype
+        |-- install-dot11-win.vbs
+        `-- sample
+            `-- dot11modes.ber
+
+51 directories, 517 files

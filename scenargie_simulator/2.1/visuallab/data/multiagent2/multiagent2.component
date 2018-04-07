@@ -1,0 +1,124 @@
+version;2.1.1
+
+##### components
+# ["component"];[name];[prefix];[layer];[owners (CSV)];[is default];[trace-models (CSV)];Sort Order
+
+# layer =
+#   misc
+#   usr
+#   mob
+#   app
+#   tsp
+#   net
+#   if (abbr:interface)
+#   prop
+
+# owners =
+#   global
+#   channel
+#   modelglobal
+#   intersection
+#   building
+#   wall
+#   propagation
+#   road
+#   colormap
+#   comm
+#   gis
+#   colormap
+#   system
+#   common
+
+# sort orders =
+#   general
+#   gis
+#   prop
+#   user
+#   mob
+#   app
+#   tsp
+#   net
+#   mac
+#   phy
+
+##### properties
+# [name];[display];[type];[rule];[default value]
+
+# simulation input =
+#   no-whitespace-string : the string will be written to a scenario file.
+#   "-" : no writting
+
+# type =
+#    0: integer [rule: unit]
+#    1: double [rule: unit]
+#    2: bool [rule: "b" or "y" or "o"]
+#    3: string [rule: no]
+#    4: enum [rule: csv enum candidates]
+#    5: input file [rule: filter]
+#    6: output file [rule: filter]
+#    9: object type [rule: feature]
+#   10: object ids [rule: feature,type,number]
+#   11: fileprefixs [rule: path]
+#   12: system instance [rule: type
+#   13: longitude [rule: no]
+#   14: latitude [rule: no]
+
+# unit =
+#   length: m,cm,km
+#   speed: m/s,m/h,km/s,km/h
+#   power: dbm,mw
+#   datacapacity: byte,kb,mb
+#   datatransferrate: bps,kbps,mbps
+#   frequency: mhz,ghz
+#   time: s(sec.),ms(milli sec.),us(micro sec.),
+#         ns(nano sec.),inf_time(inf time)
+#   angle: degree,radian
+#   others: fixed unit
+
+#### stat
+# ["stat"];[name](;[instance id type];)
+
+# instance id type =
+#   none
+#   app
+#   node
+#   instance
+
+#---------------------------------------------------------------------
+
+component;MultiAgent2;abstract-multiagent2;misc;global;1;;general
+multiagent2-step-duration;Time Step Duration;1;s;0.005s
+multiagent2-pedestrian-model-is-on;Pedestrian Model;2;;true
+multiagent2-peoplefilename;People Filename;5;;peoples.txt
+multiagent2-waypoint-link-weight-adjustment-filename;Link Weight Adjustment Filename;5;;
+multiagent2-directional-form-factor;Directional Form Factor;1;;0.2
+multiagent2-pedestrian-interaction-strength-factor;Pedestrian Interaction Strength Factor;1;;2.1
+multiagent2-pedestrian-interaction-range-meters;Pedestrian Interation Range;1;m;0.3
+multiagent2-barrier-interaction-strength-factor;Barrier Interaction Strength Factor;1;;5.1
+multiagent2-barrier-interaction-range-meters;Barrier Interation Range;1;m;0.5
+multiagent2-pedestrian-repulsion-radius-meters;Pedestrian Repulsion Radius;1;m;0.2
+multiagent2-acceleration-relaxation-time-secs;Acceleration Relaxation Time;1;s;0.5
+#multiagent2-mean-desired-pedestrian-speed-meters-sec;Mean Desired Pedestrian Speed;1;m/s;1.34m/s
+#multiagent2-desired-pedestrian-speed-standard-deviation-meters-sec;Desired Pedestrian Speed Standard Deviation Meters Sec;1;;0.26
+multiagent2-max-force-calc-distance-meters;Pedestrian Social Force Calc Distance;1;m;5.0
+multiagent2-ignore-barrier-distance-meters;Barrier Social Force Calc Distance;1;m;5.0
+multiagent2-waypoint-close-enough-distance-meters;Waypoint Close Enough Distance;1;m;0.3
+
+multiagent2-vehicle-model-is-on;Vehicle Model;2;;true
+multiagent2-vehiclefilename;Vehicle Filename;5;;vehicles.txt
+multiagent2-connections-filename;Connections Filename;5;;connections.txt
+multiagent2-right-hand-traffic-roads;Right Hand Traffic Roads;2;;false
+multiagent2-forced-lane-change-stop-distance-per-lane-meters;Forced Lane Change Stop Distance Per Lane;1;m;10.0
+intelligent-driver-model-max-acceleration-meters-sec;Max Acceleration [m/s^2];1;;1.4
+intelligent-driver-model-desired-braking-deacceleration-meters-sec;Desired Braking Deacceleration [m/s^2];1;;2.0
+intelligent-driver-model-min-gap-meters;Min Gap Distance;1;m;2.0
+intelligent-driver-model-time-headway-secs;Time Headway Duration;1;s;1.5
+intelligent-driver-model-search-distance-cutoff-meters;Search Distance Cutoff Distance;1;m;200.0
+
+dep;multiagent2-pedestrian-model-is-on
+true;multiagent2-peoplefilename;multiagent2-waypoint-link-weight-adjustment-filename;multiagent2-directional-form-factor;multiagent2-pedestrian-interaction-strength-factor;multiagent2-pedestrian-interaction-range-meters;multiagent2-barrier-interaction-strength-factor;multiagent2-barrier-interaction-range-meters;multiagent2-pedestrian-repulsion-radius-meters;multiagent2-acceleration-relaxation-time-secs;multiagent2-max-force-calc-distance-meters;multiagent2-ignore-barrier-distance-meters;multiagent2-waypoint-close-enough-distance-meters
+
+dep;multiagent2-vehicle-model-is-on
+true;multiagent2-vehiclefilename;multiagent2-connections-filename;multiagent2-right-hand-traffic-roads;multiagent2-forced-lane-change-stop-distance-per-lane-meters;intelligent-driver-model-max-acceleration-meters-sec;intelligent-driver-model-desired-braking-deacceleration-meters-sec;intelligent-driver-model-min-gap-meters;intelligent-driver-model-time-headway-secs;intelligent-driver-model-search-distance-cutoff-meters
+
+

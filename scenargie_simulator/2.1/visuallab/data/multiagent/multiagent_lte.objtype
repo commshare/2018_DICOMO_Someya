@@ -1,0 +1,55 @@
+version;2.1.1
+
+objtyperef;../multiagent/multiagent.objtype
+
+### lte agent
+
+objtype;Human-LteBS
+commoncomponent-fill;0xff00aaff,1
+commoncommobject-rectheight;3
+commoncommobject-rectwidth;3
+instance;AgentInstance
+instance;ShadowingNodeInstance
+instance;LteForNode
+lte-station-type;BS
+instance;TransportInstance
+instance;NetworkInstance
+instance;WiredInterface;wired1
+mac-protocol;Abstract-Network
+network-address;10.0.0.0 + $n
+network-prefix-length-bits;16
+network-address-is-primary;true
+network-allow-routing-back-out-same-interface;false
+instance;LteBsInstance;lte
+antenna-model;Omnidirectional
+channel-instance-id;predefined;;readonly
+max-antenna-gain-dbi;20
+antenna-height-meters;15
+network-address;90.0.0.0 + $n
+network-prefix-length-bits;16
+network-subnet-is-multihop;false
+network-address-is-primary;false
+network-allow-routing-back-out-same-interface;true
+mac-protocol;LTE
+lte-assigned-channel-number;0
+lte-assigned-cell-sector-id;0
+
+objtype;Human-LteUE
+commoncomponent-fill;0xff00aaff,1
+commoncommobject-rectheight;3
+commoncommobject-rectwidth;3
+instance;AgentInstance
+instance;LteForNode
+lte-station-type;UE
+instance;TransportInstance
+instance;NetworkInstance
+instance;LteUeInstance;lte
+antenna-model;Omnidirectional
+channel-instance-id;predefined;;readonly
+max-antenna-gain-dbi;0
+antenna-azimuth-degrees;0degree
+antenna-height-meters;1.5m
+network-address;90.0.0.0 + $n
+network-prefix-length-bits;16
+network-allow-routing-back-out-same-interface;false
+mac-protocol;LTE

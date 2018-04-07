@@ -1,0 +1,12 @@
+#===== MULTIAGENT Include/Sources ================================================
+
+MULTIAGENT_DIR = $(TOP_DIR)/multiagent
+
+MULTIAGENT_INCLUDES = -I$(MULTIAGENT_DIR)
+
+MULTIAGENT_SRCS = \
+    $(MULTIAGENT_DIR)/multiagent_agentsim.cpp \
+    $(MULTIAGENT_DIR)/multiagent_behavior.cpp \
+    $(MULTIAGENT_DIR)/multiagent_publicvehicle.cpp \
+    $(MULTIAGENT_DIR)/multiagent_gis.cpp \
+    $(MULTIAGENT_DIR)/multiagent_routesearch.cpp \

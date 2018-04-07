@@ -1,0 +1,313 @@
+version;2.1.1
+
+##### components
+# ["component"];[name];[prefix];[layer];[owners (CSV)];[is default];[trace-models (CSV)];OSI layer
+
+# layer =
+#   misc
+#   usr
+#   mob
+#   app
+#   tsp
+#   net
+#   if (abbr:interface)
+#   prop
+
+# owners =
+#   global
+#   channel
+#   modelglobal
+#   intersection
+#   building
+#   wall
+#   propagation
+#   road
+#   colormap
+#   comm
+#   gis
+#   colormap
+#   system
+#   common
+#   point
+
+# sort orders =
+#   general
+#   gis
+#   prop
+#   user
+#   mob
+#   app
+#   tsp
+#   net
+#   mac
+#   phy
+
+##### properties
+# [name];[display];[type];[rule];[default value][;description]
+
+# simulation input =
+#   no-whitespace-string : the string will be written to a scenario file.
+#   "-" : no writting
+
+# type =
+#    0: integer [rule: unit]
+#    1: double [rule: unit]
+#    2: bool [rule: "b" or "y"]
+#    3: string [rule: no]
+#    4: enum [rule: csv enum candidates]
+#    5: input file [rule: filter]
+#    6: output file [rule: filter]
+#    7: position [rule: no]
+#    8: area [rule: no]
+#    9: object type [rule: feature type]
+#   10: object id [rule: feature]
+#   11: fileprefixs [rule: path]
+#   +a: app dest
+#   +n: non-simulation
+#   15: check list [rule: check list items]
+
+# unit =
+#   length: m,cm,km
+#   speed: m/s,m/h,km/s,km/h
+#   power: dbm,mw
+#   datacapacity: byte,kb,mb
+#   datatransferrate: bps,kbps,mbps
+#   frequency: mhz,ghz
+#   time: s(sec.),ms(milli sec.),us(micro sec.),
+#         ns(nano sec.),inf_time(inf time)
+#   angle: degree,radian
+#   others: fixed unit
+
+#### trace and stat
+# ["stat" or "trace"];[name];[CSV of layer];
+
+# layer =
+#   usr
+#   app
+#   tsp
+#   net
+#   mac
+#   phy
+#   prop
+#   ant
+#   mob
+#   gis
+#   other
+
+#### stat value
+# [name];[type][;display type]
+
+# display type
+#   0 or default: non db
+#   1: db, dbm
+
+#---------------------------------------------------------------------
+
+component;Dot11;dot11global;misc;global;1;;general
+dot11-bit-error-rate-curve-file;Bit Error Rate Curve Input File;5;Bit Error Rate Curve File (*.ber),Any File (*);${INSTALL_DIRECTORY}/sample/dot11modes.ber
+dot11-channel-model;Channel Model;4;,MIMO,TGnMIMO;
+dot11-phy-use-short-guard-interval-and-shrink-ofdm-symbol-duration;Use Short Guard Interval;2;b;false
+tgn-mimo-channel-model-letter;[TGn MIMO] Channel Model;4;B,C,D,E;B
+tgn-mimo-channel-number-antennas;[TGn MIMO] Number of Antennas;0;;2
+tgn-mimo-channel-normalized-antenna-spacing;[TGn MIMO] Normalized Antenna Spacing;1;;1.0
+tgn-mimo-channel-scatterer-movement-meters-sec;[TGn MIMO] Scaterer Movement Speed [m/s];1;;0.333333333
+tgn-mimo-channel-sampling-interval-time;[TGn MIMO] Sampling Interval;1;s;384us
+
+component;Dot11Mac;dot11-edca;if;comm;0;Dot11Mac;mac
+
+dot11-node-type;Operation Mode;4;Access-Point,Mobile-STA,Ad-hoc;Ad-hoc
+dot11-access-point-ssid;AP SSID;3;;
+dot11-mobile-sta-ssid;Target SSID;3;;
+dot11-beacon-transmit-interval;Beacon Interval;1;s;100ms
+dot11-channel-scan-interval;Channel Scan Interval;1;s;500ms
+dot11-channel-scan-start-time-max-jitter;Channel Scan Start Time Max Jitter;1;s;500ms
+dot11-association-threshold-rssi-dbm;Association Threshold RSSI;1;dBm;-76.0dBm
+dot11-disassociation-threshold-rssi-dbm;Disassociation Threshold RSSI;1;dBm;-80.0dBm
+dot11-associate-failure-timeout-interval;Associate Failure Timeout Interval;1;s;1s
+dot11-beacon-rssi-moving-average-coefficient;Moving Average Coefficient for Beacon RSSI;1;;0.5
+dot11-authentication-timeout-interval;Authentication Timeout Interval;1;s;1s
+dot11-access-point-auth-processing-delay;Authentication Processing Delay;1;s;10ms
+#dot11-link-status-check-interval;Link Status Check Interval;1;s;1s
+dot11-initial-channel-number;Initial Channel Number;0;;0
+dot11-map-ip-multicast-addresses;Map IP Multicast Addresses;2;b;false
+dot11-multicast-group-number-list;Multicast Group Number List;3;;0
+dot11-enable-high-throughput-mode;Enable High Throughput Mode;2;b;false
+dot11-force-use-of-high-throughput-frames;Force Use of High Throughput Frames;2;b;false
+dot11-bonded-channel-number-list;Bonded Channel Number List;3;;0 1
+dot11-max-channel-bandwidth-mhz;Maximum Channel Bandwidth [MHz];0;;40
+dot11-adaptive-rate-control-type;Adaptive Rate Control Type;4;Static,ARF,Minstrel-HT;Static
+dot11-modulation-and-coding;Modulation and Coding;4;BPSK_0.25,BPSK_0.5,BPSK_0.75,QPSK_0.5,QPSK_0.75,16QAM_0.5,16QAM_0.75,64QAM_0.67,64QAM_0.75,64QAM_0.83,256QAM_0.75,256QAM_0.83,BPSK_0.25_x2,BPSK_0.5_x2,BPSK_0.75_x2,QPSK_0.5_x2,QPSK_0.75_x2,16QAM_0.5_x2,16QAM_0.75_x2,64QAM_0.67_x2,64QAM_0.75_x2,64QAM_0.83_x2,256QAM_0.75_x2,256QAM_0.83_x2,BPSK_0.25_x3,BPSK_0.5_x3,BPSK_0.75_x3,QPSK_0.5_x3,QPSK_0.75_x3,16QAM_0.5_x3,16QAM_0.75_x3,64QAM_0.67_x3,64QAM_0.75_x3,64QAM_0.83_x3,256QAM_0.75_x3,256QAM_0.83_x3,BPSK_0.25_x4,BPSK_0.5_x4,BPSK_0.75_x4,QPSK_0.5_x4,QPSK_0.75_x4,16QAM_0.5_x4,16QAM_0.75_x4,64QAM_0.67_x4,64QAM_0.75_x4,64QAM_0.83_x4,256QAM_0.75_x4,256QAM_0.83_x4,Dot11ad-MCS0,Dot11ad-MCS1,Dot11ad-MCS2,Dot11ad-MCS3,Dot11ad-MCS4,Dot11ad-MCS5,Dot11ad-MCS6,Dot11ad-MCS7,Dot11ad-MCS8,Dot11ad-MCS9,Dot11ad-MCS10,Dot11ad-MCS11,Dot11ad-MCS12,Dot11ad-MCS13,Dot11ad-MCS14,Dot11ad-MCS15,Dot11ad-MCS16,Dot11ad-MCS17,Dot11ad-MCS18,Dot11ad-MCS19,Dot11ad-MCS20,Dot11ad-MCS21,Dot11ad-MCS22,Dot11ad-MCS23,Dot11ad-MCS24;BPSK_0.5
+dot11-modulation-and-coding-table;Modulation and Coding Table (link-based setting);3;;
+dot11-modulation-and-coding-list;Modulation and Coding List;3;;BPSK_0.5 BPSK_0.75 QPSK_0.5 QPSK_0.75 16QAM_0.5 16QAM_0.75 64QAM_0.67 64QAM_0.75
+dot11-modulation-and-coding-for-management-frames;Modulation and Coding for Management Frames;4;BPSK_0.5,BPSK_0.75,QPSK_0.5,QPSK_0.75,16QAM_0.5,16QAM_0.75,64QAM_0.67,64QAM_0.75,64QAM_0.83,256QAM_0.75,256QAM_0.83,Dot11ad-MCS0,Dot11ad-MCS1,Dot11ad-MCS2,Dot11ad-MCS3,Dot11ad-MCS4,Dot11ad-MCS5,Dot11ad-MCS6,Dot11ad-MCS7,Dot11ad-MCS8,Dot11ad-MCS9,Dot11ad-MCS10,Dot11ad-MCS11,Dot11ad-MCS12,Dot11ad-MCS13,Dot11ad-MCS14,Dot11ad-MCS15,Dot11ad-MCS16,Dot11ad-MCS17,Dot11ad-MCS18,Dot11ad-MCS19,Dot11ad-MCS20,Dot11ad-MCS21,Dot11ad-MCS22,Dot11ad-MCS23,Dot11ad-MCS24;BPSK_0.5
+dot11-modulation-and-coding-for-broadcast;Modulation and Coding for Broadcast;4;BPSK_0.5,BPSK_0.75,QPSK_0.5,QPSK_0.75,16QAM_0.5,16QAM_0.75,64QAM_0.67,64QAM_0.75,64QAM_0.83,256QAM_0.75,256QAM_0.83,Dot11ad-MCS0,Dot11ad-MCS1,Dot11ad-MCS2,Dot11ad-MCS3,Dot11ad-MCS4,Dot11ad-MCS5,Dot11ad-MCS6,Dot11ad-MCS7,Dot11ad-MCS8,Dot11ad-MCS9,Dot11ad-MCS10,Dot11ad-MCS11,Dot11ad-MCS12,Dot11ad-MCS13,Dot11ad-MCS14,Dot11ad-MCS15,Dot11ad-MCS16,Dot11ad-MCS17,Dot11ad-MCS18,Dot11ad-MCS19,Dot11ad-MCS20,Dot11ad-MCS21,Dot11ad-MCS22,Dot11ad-MCS23,Dot11ad-MCS24;BPSK_0.5
+dot11-arf-timer-duration;Timer Duration;1;s;20s
+dot11-arf-ack-in-success-count;Ack In Success Count;0;;10
+dot11-arf-ack-in-failure-count;Ack In Failure Count;0;;2
+dot11-arf-ack-in-failure-count-of-new-rate-state;Ack In Failure Count of New Rate State;0;;1
+dot11-ack-datarate-selection-type;Ack Datarate Type;4;SameAsData,Table;SameAsData
+dot11-ack-datarate-selection-table;Ack Datarate Table;3;;BPSK_0.5:BPSK_0.5 BPSK_0.75:BPSK_0.5 QPSK_0.5:BPSK_0.5 QPSK_0.75:BPSK_0.5 16QAM_0.5:BPSK_0.5 16QAM_0.75:BPSK_0.5 64QAM_0.67:BPSK_0.5 64QAM_0.75:BPSK_0.5 64QAM_0.83:BPSK_0.5 256QAM_0.75:BPSK_0.5 256QAM_0.83:BPSK_0.5
+dot11-ack-datarate-match-num-spatial-streams;Ack Datarate Match Num Spatial Streams;2;b;false
+dot11-rts-threshold-size-bytes;RTS Threshold;0;byte;2346byte
+dot11-short-frame-retry-limit;Short Frame Retry Limit;0;;7
+dot11-long-frame-retry-limit;Long Frame Retry Limit;0;;4
+dot11-minstrel-ht-min-retry-count;Min Retry Count;0;;2
+dot11-minstrel-ht-max-retry-count;Max Retry Count;0;;7
+dot11-minstrel-ht-max-number-of-spatial-streams;Max Number of Spatial Streams;0;;1
+dot11-minstrel-ht-good-success-rate;Good Success Rate;1;;0.95
+dot11-minstrel-ht-bad-success-rate;Bad Success Rate;1;;0.20
+dot11-minstrel-ht-worst-success-rate;Worst Success Rate;1;;0.10
+dot11-minstrel-ht-max-success-rate-to-estimate-throughput;Max Success Rate to Estimate Throughput;1;;0.9
+dot11-minstrel-ht-initial-sampling-transmission-count;Initial Sampling Transmission Count;0;;4
+dot11-minstrel-ht-sampling-result-update-interval;Sampling Result Update Interval;1;s;100ms
+dot11-minstrel-ht-sampling-transmission-interval-count;Sampling Transmission Interval Count;0;;16
+dot11-minstrel-ht-sampling-retry-count;Sampling Retry Count;0;;1
+dot11-minstrel-ht-max-low-rate-sampling-count;Max Low Rate Sampling Count;0;;2
+dot11-minstrel-ht-low-rate-sampling-trying-threshold;Low Rate Sampling Trying Threshold;0;;20
+dot11-minstrel-ht-moving-average-exponentially-weight;Moving Average Exponentially Weight;1;;0.75
+dot11-minstrel-ht-enough-number-of-transmitted-mpdus-to-sample;Enough Number of Transmitted MPDUs to Sample;0;;30
+dot11-minstrel-ht-max-transmission-duration-for-a-multirate-retry-stage;Max Transmission Duration for A Multicast Retry Stage;1;s;6ms
+dot11-minstrel-ht-typical-transmission-unit-length-bytes;Typical Transmission Unit Length;0;byte;1200byte
+dot11-ap-scheduling-algorithm;AP Scheduling Algorithm;4;FIFO,RoundRobin;FIFO
+dot11-max-aggregate-mpdu-size-bytes;Max A-MPDU Size;0;byte;0
+dot11-max-num-aggregate-subframes;Max Number of Aggregate Subframes;0;;64
+dot11-protect-aggregate-frames-with-single-acked-frame;Protect Aggregate Frames with Single Acked Frame;2;b;true
+dot11-allow-frame-aggregation-with-txop-zero;Allow Frame Aggregation when TXOP = 0;2;b;false
+dot11-disallow-adding-new-packets-to-retries;Disallow Adding New Packets to Retries;2;b;true
+dot11-contention-window-min-slots;Dafault Contention Window Min Slots;0;;15
+dot11-contention-window-max-slots;Dafault Contention Window Max Slots;0;;1023
+dot11-disabled-to-jump-on-medium-without-backoff;Disable Jump on Medium without A Backoff;2;b;false
+dot11-qos-type;QoS Type;4;EDCA,DCF;EDCA
+dot11-max-packet-priority;Max Packet Priority;0;;3
+dot11-edca-category-0-priority-list;[Category0] Priority List;3;;0
+dot11-edca-category-0-num-aifs-slots;[Category0] Number of AIFS Slots;0;;7
+dot11-edca-category-0-contention-window-min-slots;[Category0] Contention Window Min Slots;0;;15
+dot11-edca-category-0-contention-window-max-slots;[Category0] Contention Window Max Slots;0;;1023
+dot11-edca-category-0-frame-lifetime;[Category0] Frame Lifetime;1;s;inf_time
+dot11-edca-category-0-downlink-txop-duration;[Category0] TXOP Duration;1;s;0ms
+dot11-edca-category-0-max-non-fifo-aggregate-size-bytes;[Category0] Max Non FIFO Aggregate Size;0;byte;0
+dot11-edca-category-1-priority-list;[Category1] Priority List;3;;1
+dot11-edca-category-1-num-aifs-slots;[Category1] Number of AIFS Slots;0;;3
+dot11-edca-category-1-contention-window-min-slots;[Category1] Contention Window Min Slots;0;;15
+dot11-edca-category-1-contention-window-max-slots;[Category1] Contention Window Max Slots;0;;1023
+dot11-edca-category-1-frame-lifetime;[Category1] Frame Lifetime;1;s;inf_time
+dot11-edca-category-1-downlink-txop-duration;[Category1] TXOP Duration;1;s;0ms
+dot11-edca-category-1-max-non-fifo-aggregate-size-bytes;[Category1] Max Non FIFO Aggregate Size;0;byte;0
+dot11-edca-category-2-priority-list;[Category2] Priority List;3;;2
+dot11-edca-category-2-num-aifs-slots;[Category2] Number of AIFS Slots;0;;2
+dot11-edca-category-2-contention-window-min-slots;[Category2] Contention Window Min Slots;0;;7
+dot11-edca-category-2-contention-window-max-slots;[Category2] Contention Window Max Slots;0;;15
+dot11-edca-category-2-frame-lifetime;[Category2] Frame Lifetime;1;s;inf_time
+dot11-edca-category-2-downlink-txop-duration;[Category2] TXOP Duration;1;s;0ms
+dot11-edca-category-2-max-non-fifo-aggregate-size-bytes;[Category2] Max Non FIFO Aggregate Size;0;byte;0
+dot11-edca-category-3-priority-list;[Category3] Priority List;3;;3
+dot11-edca-category-3-num-aifs-slots;[Category3] Number of AIFS Slots;0;;2
+dot11-edca-category-3-contention-window-min-slots;[Category3] Contention Window Min Slots;0;;3
+dot11-edca-category-3-contention-window-max-slots;[Category3] Contention Window Max Slots;0;;7
+dot11-edca-category-3-frame-lifetime;[Category3] Frame Lifetime;1;s;inf_time
+dot11-edca-category-3-downlink-txop-duration;[Category3] TXOP Duration;1;s;0ms
+dot11-edca-category-3-max-non-fifo-aggregate-size-bytes;[Category3] Max Non FIFO Aggregate Size;0;byte;0
+dot11-dcf-num-difs-slots;Number of DIFS Slots;0;;2
+dot11-dcf-contention-window-min-slots;Contention Window Min Slots;0;;15
+dot11-dcf-contention-window-max-slots;Contention Window Max Slots;0;;1023
+dot11-dcf-frame-lifetime;Frame Lifetime;1;time;inf_time
+
+dep;dot11-channel-model
+tgnmimo;tgn-mimo-channel-model-letter;tgn-mimo-channel-number-antennas;tgn-mimo-channel-normalized-antenna-spacing;tgn-mimo-channel-scatterer-movement-meters-sec;tgn-mimo-channel-sampling-interval-time
+
+dep;dot11-node-type
+access-point;dot11-access-point-ssid;dot11-beacon-transmit-interval;dot11-access-point-auth-processing-delay;dot11-ap-scheduling-algorithm
+mobile-sta;dot11-mobile-sta-ssid;dot11-channel-scan-interval;dot11-channel-scan-start-time-max-jitter;dot11-association-threshold-rssi-dbm;dot11-disassociation-threshold-rssi-dbm;dot11-associate-failure-timeout-interval;dot11-beacon-rssi-moving-average-coefficient;dot11-authentication-timeout-interval
+
+dep;dot11-ack-datarate-selection-type
+table;dot11-ack-datarate-selection-table
+
+dep;dot11-enable-high-throughput-mode
+true;dot11-bonded-channel-number-list;dot11-max-channel-bandwidth-mhz;dot11-force-use-of-high-throughput-frames
+false;dot11-initial-channel-number
+
+dep;dot11-adaptive-rate-control-type
+arf;dot11-modulation-and-coding-list;dot11-modulation-and-coding-for-broadcast;dot11-modulation-and-coding-for-management-frames;dot11-arf-timer-duration;dot11-arf-ack-in-success-count;dot11-arf-ack-in-failure-count;dot11-arf-ack-in-failure-count-of-new-rate-state;dot11-short-frame-retry-limit;dot11-long-frame-retry-limit
+static;dot11-modulation-and-coding;dot11-modulation-and-coding-table;dot11-modulation-and-coding-for-broadcast;dot11-modulation-and-coding-for-management-frames;dot11-short-frame-retry-limit;dot11-long-frame-retry-limit
+Minstrel-HT;dot11-modulation-and-coding-list;dot11-modulation-and-coding-for-broadcast;dot11-modulation-and-coding-for-management-frames;dot11-short-frame-retry-limit;dot11-minstrel-ht-min-retry-count;dot11-minstrel-ht-max-retry-count;dot11-minstrel-ht-max-number-of-spatial-streams;dot11-minstrel-ht-good-success-rate;dot11-minstrel-ht-bad-success-rate;dot11-minstrel-ht-worst-success-rate;dot11-minstrel-ht-max-success-rate-to-estimate-throughput;dot11-minstrel-ht-initial-sampling-transmission-count;dot11-minstrel-ht-sampling-result-update-interval;dot11-minstrel-ht-sampling-transmission-interval-count;dot11-minstrel-ht-sampling-retry-count;dot11-minstrel-ht-max-low-rate-sampling-count;dot11-minstrel-ht-low-rate-sampling-trying-threshold;dot11-minstrel-ht-moving-average-exponentially-weight;dot11-minstrel-ht-enough-number-of-transmitted-mpdus-to-sample;dot11-minstrel-ht-max-transmission-duration-for-a-multirate-retry-stage;dot11-minstrel-ht-typical-transmission-unit-length-bytes
+
+dep;dot11-qos-type
+EDCA;dot11-max-packet-priority;dot11-edca-category-0-priority-list;dot11-edca-category-0-num-aifs-slots;dot11-edca-category-0-contention-window-min-slots;dot11-edca-category-0-contention-window-max-slots;dot11-edca-category-0-frame-lifetime;dot11-edca-category-0-downlink-txop-duration;dot11-edca-category-0-max-non-fifo-aggregate-size-bytes;dot11-edca-category-1-priority-list;dot11-edca-category-1-num-aifs-slots;dot11-edca-category-1-contention-window-min-slots;dot11-edca-category-1-contention-window-max-slots;dot11-edca-category-1-frame-lifetime;dot11-edca-category-1-downlink-txop-duration;dot11-edca-category-1-max-non-fifo-aggregate-size-bytes;dot11-edca-category-2-priority-list;dot11-edca-category-2-num-aifs-slots;dot11-edca-category-2-contention-window-min-slots;dot11-edca-category-2-contention-window-max-slots;dot11-edca-category-2-frame-lifetime;dot11-edca-category-2-downlink-txop-duration;dot11-edca-category-2-max-non-fifo-aggregate-size-bytes;dot11-edca-category-3-priority-list;dot11-edca-category-3-num-aifs-slots;dot11-edca-category-3-contention-window-min-slots;dot11-edca-category-3-contention-window-max-slots;dot11-edca-category-3-frame-lifetime;dot11-edca-category-3-downlink-txop-duration;dot11-edca-category-3-max-non-fifo-aggregate-size-bytes
+DCF;dot11-dcf-num-difs-slots;dot11-dcf-contention-window-min-slots;dot11-dcf-contention-window-max-slots;dot11-dcf-frame-lifetime
+
+dep;dot11-map-ip-multicast-addresses
+true;dot11-multicast-group-number-list
+
+stat;Dot11Mac;instance;mac
+BytesSent;0
+BytesReceived;0
+Data_UnicastFramesSent;0
+Data_UnicastFramesResent;0
+Data_BroadcastFramesSent;0
+Data_AggregateFramesSent;0
+Data_AggregateFramesResent;0
+Data_FramesReceived;0
+Data_AggregatedSubframesReceived;0
+Data_DuplicatedFramesReceived;0
+ACK_FramesSent;0
+ACK_FramesReceived;0
+BlockACK_FramesSent;0
+BlockACK_FramesReceived;0
+BAR_FramesSent;0
+BAR_FramesReceived;0
+RTS_FramesSent;0
+RTS_FramesReceived;0
+CTS_FramesSent;0
+CTS_FramesReceived;0
+Beacon_FramesSent;0
+Beacon_FramesReceived;0
+AssociationRequest_FramesSent;0
+AssociationRequest_FramesReceived;0
+AssociationResponse_FramesSent;0
+AssociationResponse_FramesReceived;0
+ReassociationRequest_FramesSent;0
+ReassociationRequest_FramesReceived;0
+ReassociationResponse_FramesSent;0
+ReassociationResponse_FramesReceived;0
+Disassociation_FramesSent;0
+Disassociation_FramesReceived;0
+Authentication_FramesSent;0
+Authentication_FramesReceived;0
+FramesDropped;0
+
+component;Dot11Phy;dot11-phy;if;comm;0;Dot11Phy;phy
+dot11-phy-protocol;Phy Protocol;3;;IEEE802.11
+dot11-tx-power-specified-by;Tx Power Specified by;4;PhyLayer,UpperLayer;PhyLayer
+dot11-tx-power-dbm;Tx Power;1;dBm;20dBm
+dot11-default-tx-power-dbm-when-not-specified;Default Tx Power When Not Specified;1;dBm;20dBm
+dot11-radio-noise-figure-db;Radio Noise Figure;1;dB;10
+dot11-preamble-detection-power-threshold-dbm;Preamble Detection Power Threshold;1;dBm;-82.0dBm
+dot11-preamble-detection-probability-for-sinr-db-table;Preamble Detection Probability [SINR1:Probability1 ...];3;;
+dot11-energy-detection-power-threshold-dbm;Energy Detection Power Threshold;1;dBm;-62.0dBm
+dot11-signal-capture-ratio-threshold-db;Signal Capture Ratio Threshold;1;dB;1000
+dot11-ofdm-symbol-duration;OFDM Symbol Duration;1;s;4us
+dot11-slot-time;Slot Time;1;s;9us
+#dot11-air-propagation-time;Air Propagation Time;1;s;1us
+dot11-sifs-time;SIFS Time;1;s;16us
+dot11-rx-tx-turnaround-time;Rx-Tx Turnaround Time;1;s;2us
+dot11-phy-rx-start-delay;Rx Start Delay;1;s;25us
+dot11-preamble-length-duration;Preamble Length Duration;1;s;16us
+dot11-short-training-field-duration;Short Training Field (STF) Duration;1;s;8us
+dot11-plcp-header-length-duration;PLCP Header Length Duration;1;s;4us
+dot11-phy-high-throughput-header-additional-duration;High Throughput Header Additional Duration;1;s;12us
+dot11-phy-high-throughput-header-additional-per-stream-duration;High Throughput Header Additional Per Stream Duration;1;s;4us
+
+dep;dot11-tx-power-specified-by
+PhyLayer;dot11-tx-power-dbm
+UpperLayer;dot11-default-tx-power-dbm-when-not-specified
+
+stat;Dot11Phy;instance;phy
+FramesTransmitted;0
+FramesReceived;0
+FramesWithErrors;0
+SignalsCaptured;0
+InterferingSignals;0
+SignalsDuringTransmission;0
+TooWeakToReceiveSignals;0
+ReceivedFrameRssiDbm;1;1
+ReceivedFrameSinrDb;1;1

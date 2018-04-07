@@ -1,0 +1,122 @@
+# >>>>> Agent Behaviors <<<<<
+#
+#---+ Rule
+#
+# <Agent behavior definition format>
+# BehaviorType:{Behavior name}
+# [Time] Behavior
+# [Time, Condition] Behavior
+# ...
+#
+#   <Time format>
+#   HH:MM or HH:MM:SS or seconds in double or "-".
+#
+#   Example:
+#   [08:32] InitialLocation = Building1
+#   [08:32:00] InitialLocation = Building1
+#   [30720] InitialLocation = Building1
+#   [-] InitialLocation = Building1
+#     - "-" means the time when previous action/behavior completed.
+#
+#
+#   <Condition format>
+#   {status/profile in agent profile} =<> {value in double}
+#
+#   Example:
+#   [120, Utility1 > 0.5] MoveToDestination = Building1
+#     - On 120 seconds, only agents which have more than 0.5 for Utility1 move to Building1.
+#
+#
+#   <Behavior format>
+#   {event} = {value}, {event} = {value}, ...
+#
+#   Predefined event name and value:
+#
+#   InitialLocation = {initial location name}
+#     - Agent will show up at a speciflied location.
+#     - {initial location name} must be a name of building/park/POI, "RandomBuilding", "RandomPark",
+#       "RandomPoi", "PresentLocation" or a user-defined location group name.
+#     - RandomBuilding/RandomPark/RandomPoi is a randomly picked building/park/POI from all buildings/parks/POIs.
+#     - PresentLocation means a current position of the agent.
+#
+#   InitialLocationId = {initial location ID}
+#     - Agent will show up at a specified location.
+#     - {initial location ID} must be an ID of building, park or POI.
+#
+#   MoveToDestination = {destination}
+#     - Agent will move to a specified destination.
+#     - {destination} must be a name of building/park/POI, "RandomBuilding", "RandomPark", "RandomPoi",
+#       "InitialLocation" or a user-defined location group name.
+#     - RandomBuilding/RandomPark/RandomPoi is a randomly picked Building/Park/POI from all buildings/parks/POIs.
+#     - InitialLocation means agent initial position defined in "InitialLocation" or "InitialLocationId".
+#
+#   MoveToDestinationId = {destination ID}
+#     - Agent will move to a specified destination.
+#     - {destination ID} must be a name of building/park/POI.
+#
+#   DestinationChoiceType = "Random" or "Nearest"
+#     - This is used when value of MoveToDestination is a user-defined location group.
+#     - "Random" means a randomly picked destination from a user-defined location group.
+#     - "Nearest" means a nearest destination of a user-defined location group from agent current location or
+#       a location specified in DestinationChoiceBaseLocation.
+#
+#   DestinationChoiceBaseLocation = {base location to pick a destination}
+#     - This is used when DestinationChoiceType = Nearest.
+#     - {base location to pick a destination} must be "AgentLocation" or a name of building/park/POI.
+#     - "AgentLocation" means a location nearest to agent location at this event execution will be picked
+#       from a user-defined location group.
+#     - When a name of building/park/POI is specified, a location nearest to the specified location
+#       will be picked from a user-defined location group.
+#
+#   MobilityMeans = "Walk", "Bicycle", "PrivateCar",  "Taxi", "Bus", "Train".
+#     - Agent will use the specified mobility means if available.
+#
+#   Wait = {duration of waiting time}
+#     - Agent will stay at current location for specified duration.
+#
+#   WaitUntil = {waiting time}
+#     - Agent will stay at current location until specified time.
+#
+#
+# <user-defined Location group format>
+# LocationGroup {location group name} = {comma-delimited location names}
+# LocationIdGroup {location ID group name} = {comma-delimited location IDs}
+# 
+# Example:
+# LocationGroup Parkings = building1, building2, building3
+# LocationIdGroup StructureIds = 102000001, 102000002, 102000003
+#
+
+#Locations
+LocationGroup RandomHouse = House1,House2,House3,House4,House5,House6,House7,House8,House9,House10,House11,House12,House13,House14,House15,House16,House17,House18,House19,House20,House21,House22,House23,House24,House25,House26,House27,House28,House29,House30,House31,House32,House33,House34,House35,House36,House37,House38,House39,House40,House41,House42,House43,House44,House45,House46,House47,House48,House49,House50,House51,House52,House53,House54,House55,House56,House57,House58,House59,House60,House61,House62,House63,House64,House65,House66,House67,House68,House69,House70,House71,House72,House73,House74,House75,House76,House77,House78,House79,House80,House81,House82,House83,House84,House85,House86,House87,House88,House89,House90,House91,House92,House93,House94,House95,House96,House97,House98,House99,House100,House101,House102,House103,House104,House105,House106,House107,House108
+LocationGroup Stationbuildings = StationBuilding1,StationBuilding2
+LocationGroup RandomOffice = Office1,Office2,Office3,Office4,Office5,Office6,Office7,Office8,Office9,Office10,Office11,Office12,Office13,Office14,Office15,Office16,Office17,Office18,Office19,Office20,Office21,Office22,Office23,Office24,Office25,Office26,Office27,Office28
+LocationGroup ElementarySchool = School1,School2,School3,School4,School5
+LocationGroup RandomShop = Shop1,Shop2,Shop3,Shop4,Shop5,Shop6,Shop7,Shop8,Shop9,Shop10,Shop11,Shop12,Shop13,Shop14,Shop15,Shop16,Shop17,Shop18
+LocationGroup Parks = Park15,Park16,Park17,Park18,Park19,Park20,Park21,Park22,Park23,Park24,Park25,Park26,Park27,Park28,Park29,Park30,Park31,Park32,Park33,Park34,Park35,Park36,Park37,Park38,Park39,Park40,Park41
+
+
+BehaviorType:OfficeWorkerBehavior1
+
+[-] InitialLocation = PresentLocation
+[UNI(1, 20)] MoveToDestination = RandomOffice, PreferedMobilityMeans = bus, WaitUntil = "UNI(270,290)"
+[-] MoveToDestination = RandomShop, PreferedMobilityMeans = Walk
+[-] MoveToDestination = RandomHouse, WaitUntil = 600
+
+
+BehaviorType:OfficeWorkerBehavior2
+
+[UNI(1, 100)] InitialLocation = PresentLocation
+[-] MoveToDestination = RandomOffice, PreferedMobilityMeans = Train, WaitUntil = "UNI(300,320)"
+[-] MoveToDestination = Stationbuildings, PreferedMobilityMeans = Train
+
+
+BehaviorType:PupilBehavior
+
+[-] InitialLocation = PresentLocation
+[UNI(1,10)] MoveToDestination = ElementarySchool, DestinationChoiceType = Nearest, PreferedMobilityMeans = Walk, WaitUntil = "UNI(200,210)"
+[-] MoveToDestination = Parks, DestinationChoiceType = Nearest
+[-] MoveToDestination = RandomHouse, PreferedMobilityMeans = bus, Wait = 900
+
+
+

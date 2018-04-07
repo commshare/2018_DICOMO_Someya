@@ -1,0 +1,313 @@
+version;2.1.1
+
+##### components
+# ["component"];[name];[prefix];[layer];[owners (CSV)];[is default];[trace-models (CSV)];Sort Order
+
+# layer =
+#   misc
+#   usr
+#   mob
+#   app
+#   tsp
+#   net
+#   if (abbr:interface)
+#   prop
+
+# owners =
+#   global
+#   channel
+#   modelglobal
+#   intersection
+#   building
+#   propagation
+#   road
+#   colormap
+#   comm
+#   gis
+#   colormap
+#   system
+#   common
+
+# sort orders =
+#   general
+#   gis
+#   prop
+#   user
+#   mob
+#   app
+#   tsp
+#   net
+#   mac
+#   phy
+
+##### properties
+# [name];[display];[type];[rule];[default value][;description]
+
+# simulation input =
+#   no-whitespace-string : the string will be written to a scenario file.
+#   "-" : no writting
+
+# type =
+#    0: integer [rule: unit]
+#    1: double [rule: unit]
+#    2: bool [rule: "b" or "y" or "o"]
+#    3: string [rule: no]
+#    4: enum [rule: csv enum candidates]
+#    5: input file [rule: filter]
+#    6: output file [rule: filter]
+#    9: object type [rule: feature]
+#   10: object ids [rule: feature,type,number]
+#   11: fileprefixs [rule: path]
+#   12: system instance [rule: type
+#   13: longitude [rule: no]
+#   14: latitude [rule: no]
+#   15: check list [rule: check list items]
+
+# unit =
+#   length: m,cm,km
+#   speed: m/s,m/h,km/s,km/h
+#   power: dbm,mw
+#   datacapacity: byte,kb,mb
+#   datatransferrate: bps,kbps,mbps
+#   frequency: mhz,ghz
+#   time: s(sec.),ms(milli sec.),us(micro sec.),
+#         ns(nano sec.),inf_time(inf time)
+#   angle: degree,radian
+#   others: fixed unit
+
+#### stat
+# ["stat"];[name](;[instance id type];)
+
+# instance id type =
+#   none
+#   app
+#   node
+#   instance
+
+#### stat value
+# [name];[type][;display type]
+
+# display type
+#   0 or default: non db
+#   1: db, dbm
+
+#---------------------------------------------------------------------
+component;Basic Safety Message;bsm;app;comm;0;BsmApp;app;noinstance
+its-bsm-app-traffic-start-time; BSM Start Time;1;s;10s
+its-bsm-app-traffic-end-time; BSM End Time;1;s;110s
+its-bsm-app-traffic-start-time-max-jitter; BSM Start Time Jitter;1;s;100ms
+its-bsm-app-packet-payload-size-bytes; BSM Payload Size;0;byte;128byte
+its-bsm-app-traffic-interval; BSM Interval;1;s;100ms
+its-bsm-app-service-provider-id; BSM Service Provider ID;0;;
+its-bsm-channel-number; BSM Channel Number;0;;178
+its-bsm-app-packet-priority; BSM Packet Priority;0;;0
+
+stat;BsmApp;no;app
+PacketsSent;0
+PacketsReceived;0
+BytesSent;0
+BytesReceived;0
+EndToEndDelay;1
+
+translate;1.7.2
+componentname;Basic Safety Message Application;Basic Safety Message
+
+component;ITS Broadcast;its broadcast app;app;comm;0;ItsBcApp;app;noinstance
+its-broadcast-app-traffic-start-time;Start Time;1;s;10s
+its-broadcast-app-traffic-end-time;End Time;1;s;110s
+its-broadcast-app-traffic-start-time-max-jitter;Start Time Max Jitter;1;s;100ms
+its-broadcast-app-packet-payload-size-bytes;Payload Size;0;byte;128byte
+its-broadcast-app-traffic-interval;Interval;1;s;100ms
+#its-broadcast-app-geonet-max-packet-lifetime;Max Packet Lifetime;1;s;100ms
+#its-broadcast-app-geonet-repetition-interval;Packet Repetition Interval;1;s;20ms
+its-broadcast-app-packet-priority;Priority;0;;0
+
+stat;ItsBcApp;no;app
+PacketsSent;0
+PacketsReceived;0
+BytesSent;0
+BytesReceived;0
+EndToEndDelay;1
+
+translate;1.7.2
+componentname;ITS Broadcast Application;ITS Broadcast
+
+component;Wave Short Message Protocol;wsmp;net;comm;0;Wsmp;net
+its-wsmp-default-tx-power; WSMP Default Tx Power;1;dBm;32dBm
+its-wsmp-default-datarate-bits-per-second; WSMP Default Datarate;0;bps;3000000bps
+
+its-wsmp-channel-detail-setting; WSMP Channel Detail Setting;4;Off,On;Off
+its-wsmp-ch172-default-tx-power; WSMP CH172 Default Tx Power;1;dBm;32dBm
+its-wsmp-ch174-default-tx-power; WSMP CH174 Default Tx Power;1;dBm;32dBm
+its-wsmp-ch176-default-tx-power; WSMP CH176 Default Tx Power;1;dBm;32dBm
+its-wsmp-ch178-default-tx-power; WSMP CH178 Default Tx Power;1;dBm;32dBm
+its-wsmp-ch180-default-tx-power; WSMP CH180 Default Tx Power;1;dBm;32dBm
+its-wsmp-ch182-default-tx-power; WSMP CH182 Default Tx Power;1;dBm;32dBm
+its-wsmp-ch184-default-tx-power; WSMP CH184 Default Tx Power;1;dBm;32dBm
+its-wsmp-ch172-default-datarate-bits-per-second; WSMP CH172 Default Datarate;0;bps;3000000bps
+its-wsmp-ch174-default-datarate-bits-per-second; WSMP CH174 Default Datarate;0;bps;3000000bps
+its-wsmp-ch176-default-datarate-bits-per-second; WSMP CH176 Default Datarate;0;bps;3000000bps
+its-wsmp-ch178-default-datarate-bits-per-second; WSMP CH178 Default Datarate;0;bps;3000000bps
+its-wsmp-ch180-default-datarate-bits-per-second; WSMP CH180 Default Datarate;0;bps;3000000bps
+its-wsmp-ch182-default-datarate-bits-per-second; WSMP CH182 Default Datarate;0;bps;3000000bps
+its-wsmp-ch184-default-datarate-bits-per-second; WSMP CH184 Default Datarate;0;bps;3000000bps
+
+its-wsmp-wsa-packet-priority; WSMP WSA Packet Priority;0;;3
+its-wsmp-wsa-packet-channel-number; WSMP WSA Packet Channel Number;0;;178
+
+dep;its-wsmp-channel-detail-setting
+on;its-wsmp-ch172-default-tx-power;its-wsmp-ch172-default-datarate-bits-per-second;its-wsmp-ch174-default-tx-power;its-wsmp-ch174-default-datarate-bits-per-second;its-wsmp-ch176-default-tx-power;its-wsmp-ch176-default-datarate-bits-per-second;its-wsmp-ch178-default-tx-power;its-wsmp-ch178-default-datarate-bits-per-second;its-wsmp-ch180-default-tx-power;its-wsmp-ch180-default-datarate-bits-per-second;its-wsmp-ch182-default-tx-power;its-wsmp-ch182-default-datarate-bits-per-second;its-wsmp-ch184-default-tx-power;its-wsmp-ch184-default-datarate-bits-per-second
+
+stat;Wsmp;node;net
+PacketsSent;0
+PacketsReceived;0
+BytesSent;0
+BytesReceived;0
+MaxPacketsQueueDrops;0
+MaxBytesQueueDrops;0
+
+component;Dot11Queue;dot11queue;if;comm;0;;mac
+interface-output-queue-max-packets-per-subq;Max Packets per Sub-Queue;0;;1000
+interface-output-queue-max-bytes-per-subq;Max Bytes per Sub-Queue;0;byte;1000000byte
+
+component;Wave;wave;if;comm;0;Wave;phy
+its-wave-device-names;Wave Phy Device Names;3;;
+its-wave-cch-interval;Control Channel Interval;1;s;50ms
+its-wave-sch-interval;Service Channel Interval;1;s;50ms
+its-wave-sync-tolerance;Synchronization Tolerance;1;s;2ms
+its-wave-max-channel-switching-time;Max Channel Switching Time;1;s;2ms
+its-wave-ip-packet-channel-number;IP Packet Channel Number;0;;172
+
+component;WavePhy;wavephy;if;comm;0;;phy
+its-wave-phy-support-channels;Supporting Channels;3;;
+its-wave-phy-cch-mac-name;Control Channel Mac;3;;mac_cch
+its-wave-phy-sch-mac-name;Service Channel Mac;3;;mac_sch
+
+
+component;GeoNetDCC;geonetdcc;if;comm;0;Btp,GeoNet;mac
+its-geonet-congestion-monitoring-max-vehicles;Max Vehicles for Congestion Monitoring;0;;100
+its-geonet-congestion-monitoring-timeout-time;Timeout Time for Congestion Monitoring;1;s;1s
+its-geonet-dcc-control-loop-interval;DCC Control Loop Interval;1;s;100ms
+its-geonet-enable-tranmit-datarate-control;Enable Tranmit Datarate Control;2;b;false
+its-geonet-tdc-congestion-vs-datarate-mbps-table;Congestion vs. Datarate [Mbps] Table;3;;"0:6 30:9 50:12 60:18"
+its-geonet-enable-tranmit-power-control;Enable Tranmit Power Control;2;b;false
+its-geonet-tpc-congestion-vs-tx-power-dbm-table;Congestion vs. Tx Power [dBm] Table;3;;"0:20 30:20 40:15 50:10 60:0"
+its-geonet-tpc-interpolation-step-dbm;TPC Interpolation Step [dBm];1;dBm;1.0dBm
+its-geonet-enable-dcc-sensitivity-control;Enable DCC Sensitivity Control;2;b;false
+its-geonet-dsc-congestion-vs-sensitivity-dbm-table;Congestion vs. DCA Threshold [dBm] Table;3;;"0:-85 30:-85 40:-80 50:-75 60:-70"
+its-geonet-dsc-interpolation-step-dbm;DSC Interpolation Step [dBm];1;dBm;1.0dBm
+
+dep;its-geonet-enable-tranmit-datarate-control
+true;its-geonet-tdc-congestion-vs-datarate-mbps-table
+#false
+
+dep;its-geonet-enable-tranmit-power-control
+true;its-geonet-tpc-congestion-vs-tx-power-dbm-table;its-geonet-tpc-interpolation-step-dbm
+#false
+
+dep;its-geonet-enable-dcc-sensitivity-control
+true;its-geonet-dsc-congestion-vs-sensitivity-dbm-table;its-geonet-dsc-interpolation-step-dbm
+#false
+
+stat;Btp;node;tsp
+BytesSent;0
+BytesReceived;0
+
+stat;GeoNet;node;net
+PacketsSent;0
+PacketsReceived;0
+BytesSent;0
+BytesReceived;0
+MaxPacketsQueueDrops;0
+MaxBytesQueueDrops;0
+
+stat;GeoNetDCC;instance;mac
+TxDatarateBps;1
+TxPowerDbm;1;1
+CCAThresholdDbm;1;1
+
+component;T109App;t109app;if;comm;0;T109App;app
+t109-packet-start-time;Packet Start Time;1;s;0
+t109-packet-end-time;Packet End Time;1;s;inf_time
+t109-packet-start-time-jitter;Packet Start Time Jitter;1;s;100ms
+t109-packet-size-bytes;Packet Size;0;byte;546byte
+t109-packet-interval;Packet Interval;1;s;100ms
+
+stat;T109App;instance;app
+PacketsSent;0
+PacketsReceived;0
+BytesSent;0
+BytesReceived;0
+
+component;T109Mac;t109mac;if;comm;0;T109Mac;mac
+t109-max-transmission-duration;Max Transmission Duration;1;s;1ms
+t109-time-division-interval;Time Division Interval;1;s;100ms
+t109-rsu-slot-information-available-duration;RSU Slot Information Available Time;1;s;300ms
+t109-rsu-control-unit-duration;RSU Control Unit Duration;1;s;16us
+t109-rsu-frame-guard-time;RSU Frame Guard Time;1;s;64us
+t109-contention-window-max-slots;Contention Window Max Slots;0;;63
+t109-access-mode;Access Mode;4;OBE,RSU;OBE
+t109-rsu-slot-number;Slot Number;0;;0
+t109-slot-information-forward-count;Slot Information Forward Count;0;;3
+t109-rsu-slot-0-start-time;Slot 0 Start Time;1;s;0
+t109-rsu-slot-0-duration;Slot 0 Duration;1;s;985us
+t109-rsu-slot-1-start-time;Slot 1 Start Time;1;s;6240us
+t109-rsu-slot-1-duration;Slot 1 Duration;1;s;985us
+t109-rsu-slot-2-start-time;Slot 2 Start Time;1;s;12480us
+t109-rsu-slot-2-duration;Slot 2 Duration;1;s;985us
+t109-rsu-slot-3-start-time;Slot 3 Start Time;1;s;18720us
+t109-rsu-slot-3-duration;Slot 3 Duration;1;s;985us
+t109-rsu-slot-4-start-time;Slot 4 Start Time;1;s;24960us
+t109-rsu-slot-4-duration;Slot 4 Duration;1;s;985us
+t109-rsu-slot-5-start-time;Slot 5 Start Time;1;s;31200us
+t109-rsu-slot-5-duration;Slot 5 Duration;1;s;985us
+t109-rsu-slot-6-start-time;Slot 6 Start Time;1;s;37440us
+t109-rsu-slot-6-duration;Slot 6 Duration;1;s;985us
+t109-rsu-slot-7-start-time;Slot 7 Start Time;1;s;43680us
+t109-rsu-slot-7-duration;Slot 7 Duration;1;s;985us
+t109-rsu-slot-8-start-time;Slot 8 Start Time;1;s;49920us
+t109-rsu-slot-8-duration;Slot 8 Duration;1;s;985us
+t109-rsu-slot-9-start-time;Slot 9 Start Time;1;s;56160us
+t109-rsu-slot-9-duration;Slot 9 Duration;1;s;985us
+t109-rsu-slot-10-start-time;Slot 10 Start Time;1;s;62400us
+t109-rsu-slot-10-duration;Slot 10 Duration;1;s;985us
+t109-rsu-slot-11-start-time;Slot 11 Start Time;1;s;68640us
+t109-rsu-slot-11-duration;Slot 11 Duration;1;s;985us
+t109-rsu-slot-12-start-time;Slot 12 Start Time;1;s;74880us
+t109-rsu-slot-12-duration;Slot 12 Duration;1;s;985us
+t109-rsu-slot-13-start-time;Slot 13 Start Time;1;s;81120us
+t109-rsu-slot-13-duration;Slot 13 Duration;1;s;985us
+t109-rsu-slot-14-start-time;Slot 14 Start Time;1;s;87360us
+t109-rsu-slot-14-duration;Slot 14 Duration;1;s;985us
+t109-rsu-slot-15-start-time;Slot 15 Start Time;1;s;93600us
+t109-rsu-slot-15-duration;Slot 15 Duration;1;s;985us
+
+stat;T109Mac;instance;mac
+Data_BroadcastFramesSent;0
+Data_FramesReceived;0
+
+component;T109Phy;t109phy;if;comm;0;T109Phy;phy
+t109-phy-protocol;Phy Protocol;3;;IEEE802.11
+t109-tx-power-dbm;Tx Power;1;dBm;19.2dBm
+t109-datarate-bits-per-second;Datarate;0;bps;12Mbps
+t109-radio-noise-figure-db;Radio Noise Figure;1;dB;6.0
+t109-preamble-detection-power-threshold-dbm;Preamble Detection Power Threshold;1;dBm;-85.0dBm
+t109-energy-detection-power-threshold-dbm;Energy Detection Power Threshold;1;dBm;-65.0dBm
+t109-signal-capture-ratio-threshold-db;Signal Capture Ratio Threshold;1;dB;10
+t109-slot-time;Slot Time;1;s;13us
+t109-sifs-time;SIFS Time;1;s;32us
+t109-rx-tx-turnaround-time;Rx-Tx Turnaround Time;1;s;2us
+t109-preamble-length-duration;Preamble Length Duration;1;s;32us
+t109-plcp-header-length-duration;PLCP Header Length Duration;1;s;8us
+t109-plcp-header-rate-bits-sec;PLCP Header Datarate;0;bps;3000000bps
+
+stat;T109Phy;instance;phy
+FramesTransmitted;0
+FramesReceived;0
+FramesWithErrors;0
+SignalsCaptured;0
+InterferingSignals;0
+SignalsDuringTransmission;0
+TooWeakToReceiveSignals;0
+ReceivedFrameRssiDbm;1;1
+ReceivedFrameSinrDb;1;1

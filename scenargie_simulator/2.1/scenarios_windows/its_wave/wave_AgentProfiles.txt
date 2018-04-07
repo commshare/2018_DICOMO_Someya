@@ -1,0 +1,161 @@
+# >>>>> Agent Profiles <<<<<
+#
+#
+#---+ Rule
+#
+# (Agent Definition)
+#
+# ProfileType :             : <User Definition Name>
+#                           : --- Reserved = Taxi, Bus
+#
+# Age                       :
+# WalkSpeed                 : (m/s)
+# BicycleSpeed              : (m/s)
+# VehicleSpeed              : (m/s)
+# Utility1                  :
+# Utility2                  :
+# RecalcIntervalForLastViaPointDelay     :
+# RecalcIntervalForNextViaPointDelay     :
+# RecalcIntervalForDestinationDelay     :
+# RecalcIntervalForVehicleDelay  :
+# RecalcThresholdForCongestion    :
+# RecalcThresholdForUtility1      :
+# RecalcThresholdForUtility2      :
+# MinRouteRecalcInterval      :
+# RouteRecalcProbability      :
+# RecalcProbWhenMissingAVehicle  :
+# FuelConsumption               : (money/m)
+# BoardingDelay                : (s)
+# PedestrianRecognitionProbability :
+# TimeHeadway               : (s)
+# MinVehicleGap             : (m)
+# MaxAcceleration           : (m/s^2)
+# MaxDeceleration           : (m/s^2)
+# LaneChangeAccelerationThreshold :: (m/s^2)
+# PassiveYieldTime          : (s)
+# ActiveYieldTime           : (s)
+# YieldWaitingTime           : (s)
+# TotalTravelDistance            : (m)
+# TotalTravelTime                : (s)
+# RoadWidthWeight           :
+# Disaster                  : (Disater Mode:1)
+# RoutecalculationTime      : (s)
+# PrivateCarOwnership                    : (YES:1, NO:0) [0-1]
+# BicycleOwnership                : (YES:1, NO:0) [0-1]
+# WalkSpeedAtTransfer             : (Normal, Slow, VerySlow)
+# MaxWaitingTimeForTaxiAssignment             : (s)
+# Utility1Function          :
+# Utility2Function          :
+#
+#
+# (Route Search)
+#
+# RoutePriority        : <Route Priority Formula>
+#                      : Example: RoutePriority = (1 + _MoveByPreferedMobilityMeans) * (_TotalTravelDistance / MAX(1, _TotalTravelTime)) / LOG10(MAX(10, (_Price / MAX(1, _TotalTravelDistance))*1000))
+#                      : ------> 1(or 2 if behavior is prefered.) * <Average Travel Speed [m/s]> / <Log10 of Average Price [money/km]: [1, ...] >
+#
+# Predefined variables for the formula
+#  _MoveByPreferedMobilityMeans               : 0 or 1
+#  _ArrivalTime        : arrival time [s]
+#  _TotalTravelTime         : total moved time [s]
+#  _TotalTravelDistance           : total moved distance [m]
+#  _TotalPublicTransportationDelay        : total transportation delay time [s]
+#  _Price              : total used money
+#  _TransferTime       : total number of transfer times
+#  _TotalTransferDuration   : total transfer duration [s]
+#  _NumberOfPeopleOnRoute   : number of people on the road [0-1]
+#  _NumberOfVehiclesOnRoute  : number of vehicle on the road [0-1]
+#
+#
+# (Other Rules)
+#
+# LOG10(value)                : Decadic Logarithm
+# LOG(value)                  : Natural Logarithm
+# POW(value, multiplier)      : Power
+# MIN(value1, value2)         : Minimum
+# MAX(value, value2)          : Maximum
+# SQRT(value)                 : Squre Root
+# SIN(value)                  : Sine
+# COS(value)                  : Cosine
+# TAN(value)                  : Tangent
+# ABS(value)                  : Absolute
+# CEIL(value)                 : Ceilling
+# FLOOR(value)                : Floor
+# PI()                        : PI
+# EXP(value)                  : Exponential function
+# UNI(min, max)               : Uniform integer distribution
+# UNID(min, max)              : Uniform double distribution
+# NORMAL(average, deviation)  : Normal distribution
+# EXPDIST(lambda)             : Exponential distribution
+# POISSON(lambda)             : Poisson distribution
+# ERLANG(lambda, phase)       : Erlang distribution
+#
+
+
+ProfileType:Default
+Gender = UNI(0, 1)
+Age = UNI(15, 60)
+WalkSpeed = UNID(3.0, 5.0)
+BicycleSpeed = 10
+VehicleSpeed = 60 * 1000 / 3600
+Utility1 = 0
+Utility2 = 0
+RecalcIntervalForLastViaPointDelay = 60 * 10
+RecalcIntervalForNextViaPointDelay = 60 * 10
+RecalcIntervalForDestinationDelay = 60 * 10
+RecalcIntervalForVehicleDelay = 60 * 10
+RecalcThresholdForCongestion = 0.9
+RecalcThresholdForUtility1 = 1
+RecalcThresholdForUtility2 = 1
+MinRouteRecalcInterval = 10
+RouteRecalcProbability = 0
+RecalcProbWhenMissingAVehicle = 1
+FuelConsumption = 0
+BoardingDelay = 1
+PedestrianRecognitionProbability = 1
+TimeHeadway = 1.5
+MinVehicleGap = 3.0
+MaxAcceleration = 1.0
+MaxDeceleration = -3.0
+MaxBrakingDecceleration = -20.0
+AccelerationExponent = 4
+SaveDecceleration = -12.0
+MinTurnSpeed = 10 * 1000 / 3600
+LaneChangeAccelerationThreshold = 0.2
+VelocityRatioGapDistance = 0.0
+OtherVehicleEntranceTime = 1.0
+PassiveYieldTime = 3.0
+ActiveYieldTime = -3.0
+YieldWaitingTime = 2.0
+TotalTravelDistance = 0
+TotalTravelTime = 0
+RoadWidthWeight = 0
+Disaster = 0
+RouteRecalculationTime = UNID(3600, 7200)
+WalkableDistanceToPrivateCar = 1000.
+WalkableDistanceToBusStopOrStation = 1000.
+MinDistanceToUseVehicle = 0.0
+MaxRouteCandidates = 3
+NumberOfPeople = 1
+MaxWaitingTimeAtEntrance = 0
+MaxWaitingTimeAtVehicleEntrance = 0
+PrivateCarOwnership = 0
+BicycleOwnership = 0.5
+WalkSpeedAtTransfer = Normal
+MaxWaitingTimeForTaxiAssignment = 60 * 10
+Utility1Function = UNID(0, 1)
+Utility2Function = UNID(0, 1)
+RoutePriority = (1 + _MoveByPreferedMobilityMeans) * (_TotalTravelDistance / MAX(1, _TotalTravelTime)) / LOG10(MAX(10, (_Price / MAX(1, _TotalTravelDistance))*1000))
+
+ProfileType:Bus
+VehicleSpeed = 40*1000 / 3600
+PedestrianRecognitionProbability = 1
+RoutePriority = 1
+
+ProfileType:Taxi
+VehicleSpeed = 60*1000 / 3600
+FuelConsumption = 1
+TimeWeight = 1
+PedestrianRecognitionProbability = 1
+RoutePriority = 1/_TotalTravelTime*TimeWeight
+
