@@ -1,9 +1,0 @@
-# <Start Time [s]> <Start Road Name> <Start Lane #> <Start Road Position [m]> <Velocity [m/s]> <Dest Road Name> <Dest Lane #> <Dest Road Position [m]>
-
-0.0 Road3 1 0.0 0.0 Road1 3 0.0
-5.0 Road3 1 0.0 0.0 Road2 1 340.0
-10.0 Road3 1 0.0 0.0 Road4 1 340.0
-
-0.0 Road2 3 340.0 0.0 Road3 3 0.0
-5.0 Road2 3 340.0 0.0 Road4 1 340.0
-10.0 Road2 3 340.0 0.0 Road1 3 0.0
