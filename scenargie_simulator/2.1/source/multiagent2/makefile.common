@@ -1,0 +1,11 @@
+#===== Dot11 Include/Sources ================================================
+
+MULTIAGENT2_DIR = $(TOP_DIR)/multiagent2
+
+MULTIAGENT2_INCLUDES = -I$(MULTIAGENT2_DIR)
+
+MULTIAGENT2_SRCS = $(MULTIAGENT2_DIR)/multiagent2_gis.cpp \
+
+
+
+
