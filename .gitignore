@@ -1,5 +1,6 @@
 ## Scenargie
 /scenargie_simulator/*
+!.gitkeep
 #!/scenargie_simulator/[0-9][.][0-9]/source/**
 
 
