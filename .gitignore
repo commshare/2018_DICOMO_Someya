@@ -1,6 +1,6 @@
 ## Scenargie
 scenargie_simulator/*
-!source
+!source/**
 
 
 ## C++
